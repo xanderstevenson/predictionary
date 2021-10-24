@@ -3,5 +3,5 @@
 #####################
 
 
-def age_func(first_name):
-    print(f"\n{first_name} is cool!")
+def age_func(name2):
+    print(f"\n{name2} is cool!")
