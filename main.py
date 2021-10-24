@@ -1,6 +1,6 @@
 
 # from nationality import nationality_func
-from age import age_func
+import age
 import nationality
 
 
@@ -14,5 +14,5 @@ first_name = input("\n\nPlease enter your first name: \n\n")
 valid_name = nationality.nation.nationality_func(first_name)
 
 # Run age function imported from age.py module
-age_func(valid_name)
+age.age_class.age_func(valid_name)
 
