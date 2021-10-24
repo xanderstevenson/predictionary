@@ -5,7 +5,7 @@
 import requests
 import country_converter as coco
 
-class nation:
+class Nation:
 
     def nationality_func(first_name):
 
@@ -18,7 +18,7 @@ class nation:
         if len(nation_results['country']) < 3:
             print(f"\n{first_name} is not recognized as a common name.\n")
             first_name = input("\n\nPlease enter your first name: \n\n")
-            nation.nationality_func(first_name)
+            Nation.nationality_func(first_name)
             
         else:
 
