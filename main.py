@@ -6,6 +6,7 @@
 # import adjacent modules
 import age
 import nationality
+import gender
 
 class Main:
 
@@ -18,4 +19,7 @@ class Main:
 
     # Run age function imported from age.py module
     age.Age_Class.age_func(valid_name)
+
+    # Run gender function imported from gender.py
+    gender.Gender.gender_func(valid_name)
 
