@@ -17,3 +17,4 @@ class Ip:
         print('------------------------------------------')
         print(f'Your IP Address: {ip_add}')
         print(f'Your location is {city}, {country}')
+        return ip_add, city, country
