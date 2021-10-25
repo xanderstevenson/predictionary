@@ -7,6 +7,7 @@
 import age
 import nationality
 import gender
+import ip
 
 class Main:
 
@@ -23,3 +24,5 @@ class Main:
     # Run gender function imported from gender.py
     gender.Gender.gender_func(valid_name)
 
+    # Run ip function imported from ip.py
+    ip.Ip.ip_func()
