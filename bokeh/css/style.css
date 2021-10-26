@@ -1,0 +1,9 @@
+body {
+    background: lightyellow;
+    font: 18px Arial, sans-serif;
+    text-align: center;
+}
+h1 {
+    color: orange;
+    border: 2px 2px gray;
+}
