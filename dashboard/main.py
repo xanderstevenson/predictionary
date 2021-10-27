@@ -12,6 +12,21 @@ y = [4, 5, 5, 7, 2]
 p = figure(x_range=(1, 9), width=500, height=250)
 points = p.circle(x=x, y=y, size=30, fill_color="#21a7df")
 
+
+# header
+
+header = Div(
+    text="""
+          <head>
+          <link rel="stylesheet" href="css/styles.css"/>
+          <link rel="stylesheet" href="static/css/styles.css">
+          <link rel="stylesheet" href="dashboard/static/css/styles.css"/>
+          </head>
+          """,
+    width=200,
+    height=30,
+)
+
 # set up textarea (div)
 div = Div(
     text="""
@@ -32,10 +47,8 @@ spinner = Spinner(
 )
 spinner.js_link("value", points.glyph, "size")
 
-div2 = Div(
-    text="""Your <a href="https://en.wikipedia.org/wiki/HTML">HTML</a>-supported text is initialized with the <b>text</b> argument.  The
-remaining div arguments are <b>width</b> and <b>height</b>. For this example, those values
-are <i>200</i> and <i>100</i>, respectively. """,
+title = Div(
+    text="""<h1 style='color: #049FD9; font-size: 34px; text-shadow: 1px 1px #58585B'>Predictionary</h1>""",
 width=400, height=100)
 
 
@@ -47,7 +60,7 @@ fig.line(x=[1, 2, 3], y=[1, 4, 9])
 
 layout = layout(
     [
-        [div2],
+        [title],
         [p],
         [div, spinner],
         [fig],
