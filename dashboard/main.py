@@ -1,8 +1,12 @@
 import bokeh
 from bokeh.plotting import figure, show, ColumnDataSource
-from bokeh.layouts import layout
+from bokeh.layouts import layout, row, gridplot
 from bokeh.models import Div, RangeSlider, Spinner, Button, CustomJS
 from bokeh.io import curdoc
+from nationality import nationality_func as nat
+
+valid_name = nat.nationality_func('Alex')
+
 
 # prepare some data
 x = [1, 2, 3, 4, 5]
@@ -27,44 +31,28 @@ header = Div(
     height=30,
 )
 
-# set up textarea (div)
-div = Div(
-    text="""
-          <p>Select the circle's size using this control element:</p>
-          """,
-    width=200,
-    height=30,
-)
-
-# set up spinner
-spinner = Spinner(
-    title="Circle size",
-    low=0,
-    high=60,
-    step=5,
-    value=points.glyph.size,
-    width=200,
-)
-spinner.js_link("value", points.glyph, "size")
-
 title = Div(
-    text="""<h1 style='color: #049FD9; font-size: 34px; text-shadow: 1px 1px #58585B'>Predictionary</h1>""",
+    text="""<h1 style='color: #049FD9; font-size: 34px; text-shadow: 1px 1px #58585B; border: 2px solid lightgray; padding: 7px; box-shadow: 1px 1px lightgray, -1px 1px lightgray;'>
+    Predictionary</h1>""",
 width=400, height=100)
 
+title2 = Div(
+    text="""<p style='color: #58585B; margin-top: -15px;'>Integrating APIs and IoT into a Custom Dashboard</p>""",
+width=400, height=50)
+
+name = Div(
+    text="""<p style='color: #58585B; margin-top: -15px;'>{valid_name}</p>""",
+width=400, height=50)
 
 fig = figure(title='Line plot!', sizing_mode='scale_width')
 fig.line(x=[1, 2, 3], y=[1, 4, 9])
 
-# curdoc().title = "Hello, world!"
-# curdoc().add_root(fig)
 
-layout = layout(
-    [
-        [title],
-        [p],
-        [div, spinner],
-        [fig],
-    ]
-)
 
-show(layout)
+grid = layout([
+    [title],
+    [title2],
+    [p, fig],
+])
+
+show(grid)
