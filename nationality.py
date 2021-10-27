@@ -5,6 +5,7 @@
 import requests
 import country_converter as coco
 
+
 class Nation:
 
     def nationality_func(first_name):
@@ -49,5 +50,11 @@ class Nation:
             print(f"Country 3 : {country_3[0]}\nPercentage: {'{:.2%}'.format(country_3[1])}\n")
     
         valid_name = first_name
-        return valid_name
+
+        country_1 = country_1[0]
+        country_2 = country_2[0]
+        country_3 = country_3[0]
+
+
+        return valid_name, country_1, country_2, country_3
 

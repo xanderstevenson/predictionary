@@ -15,4 +15,6 @@ class Age_Class:
         print('-------------------------------------------------------')
         print(f'Based on your name, your age is predicted to be: {age}')
         print('-------------------------------------------------------')
+        return age
+
 

@@ -16,3 +16,4 @@ class Gender:
         # print predicted gender and probability
         print(f'Your predicted gender is {gender}.\n')
         print(f'The probability is {gender_prob}')
+        return gender, gender_prob

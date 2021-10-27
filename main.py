@@ -4,8 +4,16 @@ from bokeh.layouts import layout, row, gridplot
 from bokeh.models import Div, RangeSlider, Spinner, Button, CustomJS
 from bokeh.io import curdoc
 from nationality import Nation
+from dashboard import Dash
 
-valid_name = Nation.nationality_func('Alex')
+
+valid_name = Dash().valid_name
+country_1 = Dash().country_1
+country_2 = Dash().country_2
+country_3 = Dash().country_3
+age = Dash().age
+gender = Dash().gender
+gender_prob = Dash().gender_prob
 
 
 # prepare some data
@@ -41,7 +49,7 @@ title2 = Div(
 width=400, height=50)
 
 name = Div(
-    text=f"<p style='color: #58585B; margin-top: -15px;'>{valid_name}</p>",
+    text=f"<p style='color: #58585B; margin-top: -15px;'>Name: {valid_name}, <br>Nation: {country_1}, {country_2}, {country_3}<br>Age: {age}, <br>Gender: {gender} {gender_prob}</p>",
 width=400, height=50)
 
 fig = figure(title='Line plot!', sizing_mode='scale_width')
