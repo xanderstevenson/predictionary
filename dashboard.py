@@ -26,7 +26,7 @@ class Dash:
     gender, gender_prob = gender.Gender.gender_func(valid_name)
 
     # Run ip function imported from ip.py
-    ip.Ip.ip_func()
+    ip_add, city, country = ip.Ip.ip_func()
         
 
   

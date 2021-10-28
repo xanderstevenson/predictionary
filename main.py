@@ -22,6 +22,9 @@ code_3 = Dash().code_3
 age = Dash().age
 gender = Dash().gender.capitalize()
 gender_prob = Dash().gender_prob
+ip_add=Dash().ip_add 
+city=Dash().city
+country=Dash().country
 
 
 # prepare some data
@@ -109,19 +112,28 @@ gender_graph.grid.grid_line_color = None
 # AGE
 
 age_display = Div(
-    text=f"""<p style='padding: 125px; box-shadow: 1px 1px #D3D3D3, -1px -1px #D3D3D3;font-size: 42px; color: #58585B; margin-top: 15px;'>Age:  {age}</p>""",
+    text=f"""<p style='padding: 125px; box-shadow: 1px 1px #D3D3D3, -1px -1px #D3D3D3;font-size: 40px; color: #58585B; margin-top: 15px;'><b>Age: </b>{age}</p>""",
 width=300, height=350)
 
-# NATION
 
+# NATION
 
 flag_1 = f"https://flagcdn.com/84x63/{code_1.lower()}.png"
 flag_2 = f"https://flagcdn.com/84x63/{code_2.lower()}.png"
 flag_3 = f"https://flagcdn.com/84x63/{code_3.lower()}.png"
 
 nation_display = Div(
-    text=f"""<p style='text-align: left; padding: 20px; box-shadow: 1px 1px #D3D3D3, -1px -1px #D3D3D3;font-size: 22px; color: #58585B; margin-top: 15px;'><br>1. <img src={flag_1}> {country_1} <br>2. <img src={flag_2}> {country_2} <br>3. <img src={flag_3}> {country_3} <br><br></p>""",
+    text=f"""<p style='text-align: left; padding: 20px; box-shadow: 1px 1px #D3D3D3, -1px -1px #D3D3D3;font-size: 20px; color: #58585B; margin-top: 15px;'><br>1. <img src={flag_1}> {country_1} <br>2. <img src={flag_2}> {country_2} <br>3. <img src={flag_3}> {country_3} <br><br></p>""",
 width=350, height=350)
+
+
+# IP
+
+ip_display = Div(
+    text=f"""<p style='padding: 25px; box-shadow: 1px 1px #D3D3D3, -1px -1px #D3D3D3;font-size: 22px; color: #58585B; margin: 35px;'><br><b>IP Address (IPv6)</b>: <br> {ip_add}<br><br><b>Location: </b><br>{city}, {country}<br><br></p>""",
+width=300, height=350)
+
+
 
 
 # GRID LAYOUT
@@ -130,6 +142,6 @@ grid = layout([
     [title],
     [title2],
     [gender_graph, nation_display],
-    [age_display]
+    [age_display, ip_display]
 ])
 show(grid)
