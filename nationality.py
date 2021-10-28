@@ -39,6 +39,10 @@ class Nation:
                     country_2 = list(item[1].values())
                     country_3 = list(item[2].values())
 
+            code_1 = country_1[0]
+            code_2 = country_2[0]
+            code_3 = country_3[0]
+
             # use country_converter package to convert country codes to full country names
             country_1[0] = coco.convert(names=country_1[0], to='name_short')
             country_2[0] = coco.convert(names=country_2[0], to='name_short')
@@ -56,5 +60,5 @@ class Nation:
         country_3 = country_3[0]
 
 
-        return valid_name, country_1, country_2, country_3
+        return valid_name, country_1, country_2, country_3, code_1, code_2, code_3
 

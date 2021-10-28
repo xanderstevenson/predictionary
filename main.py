@@ -16,6 +16,9 @@ valid_name = valid_name.capitalize()
 country_1 = Dash().country_1
 country_2 = Dash().country_2
 country_3 = Dash().country_3
+code_1 = Dash().code_1
+code_2 = Dash().code_2
+code_3 = Dash().code_3
 age = Dash().age
 gender = Dash().gender.capitalize()
 gender_prob = Dash().gender_prob
@@ -30,7 +33,7 @@ p = figure(x_range=(1, 9), width=500, height=250)
 points = p.circle(x=x, y=y, size=30, fill_color="#21a7df")
 
 
-# header
+# HEADER
 
 header = Div(
     text="""
@@ -38,25 +41,35 @@ header = Div(
           <link rel="stylesheet" href="css/styles.css"/>
           <link rel="stylesheet" href="static/css/styles.css">
           <link rel="stylesheet" href="dashboard/static/css/styles.css"/>
-          <style> body {background-color:silver>}</style>
+          <style> body{background-color:#C4D6ED>}</style>
           </head>
           """,
     width=200,
     height=30,
 )
 
+# TITLE
+
 title = Div(
-    text="""<h1 style='color: #049FD9; font-size: 34px; text-shadow: 1px 1px #58585B; border: 2px solid lightgray; padding: 9px; box-shadow: 1px 1px lightgray, -1px 1px lightgray;'>
+    text="""<h1 style='background-color:#ECF0F1; color: #049FD9; font-size: 34px; text-shadow: 1px 1px #58585B; border: 2px solid lightgray; padding: 9px; box-shadow: 1px 1px lightgray, -1px 1px lightgray;'>
     Predictionary</h1>""",
 width=400, height=100)
+
+# TITLE 2
 
 title2 = Div(
     text="""<p style='font-size: 28; color: #58585B; margin-top: -15px;'>Integrating APIs and IoT into a Custom Dashboard</p>""",
 width=400, height=50)
 
-name = Div(
-    text=f"<p style='fcolor: #58585B; margin-top: -15px;'>Name: {valid_name} <br>Nation: {country_1}, {country_2}, {country_3}<br>Age: {age} <br>Gender: {gender} {gender_prob}</p>",
-width=400, height=50)
+
+# # NAME
+# name = Div(
+#     text=f"<p style='fcolor: #58585B; margin-top: -15px;'>Name: {valid_name} <br>Nation: {country_1}, {country_2}, {country_3}<br>Age: {age} <br>Gender: {gender} {gender_prob}</p>",
+# width=400, height=50)
+
+
+
+
 
 
 
@@ -93,13 +106,30 @@ gender_graph.axis.visible = False
 gender_graph.grid.grid_line_color = None
 
 
+# AGE
+
+age_display = Div(
+    text=f"""<p style='padding: 125px; box-shadow: 1px 1px #D3D3D3, -1px -1px #D3D3D3;font-size: 42px; color: #58585B; margin-top: 15px;'>Age:  {age}</p>""",
+width=300, height=350)
+
+# NATION
+
+
+flag_1 = f"https://flagcdn.com/84x63/{code_1.lower()}.png"
+flag_2 = f"https://flagcdn.com/84x63/{code_2.lower()}.png"
+flag_3 = f"https://flagcdn.com/84x63/{code_3.lower()}.png"
+
+nation_display = Div(
+    text=f"""<p style='text-align: left; padding: 20px; box-shadow: 1px 1px #D3D3D3, -1px -1px #D3D3D3;font-size: 22px; color: #58585B; margin-top: 15px;'><br>1. <img src={flag_1}>{country_1}<br>2. <img src={flag_2}>{country_2}<br>3. <img src={flag_3}>{country_3}<br><br></p>""",
+width=350, height=350)
+
 
 # GRID LAYOUT
 
 grid = layout([
     [title],
     [title2],
-    [name],
-    [gender_graph]
+    [gender_graph, nation_display],
+    [age_display]
 ])
 show(grid)
