@@ -95,7 +95,7 @@ data['angle'] = data['value']/data['value'].sum() * 2*pi
 data['color'] = ['#049FD9', '#004BAF']
 
 gender_graph = figure(height=350, width=350, title=f"Gender: {gender}, Probability: {gender_prob}%", toolbar_location=None,
-           tools="hover", tooltips="@country: @value", x_range=(-0.5, 1.0))
+           tools="hover", tooltips="@country: @value", x_range=(-0.5, 1.0), title_location="below",)
 
 gender_graph.wedge(x=0, y=1, radius=0.4,
         start_angle=cumsum('angle', include_zero=True), end_angle=cumsum('angle'),
@@ -120,7 +120,7 @@ flag_2 = f"https://flagcdn.com/84x63/{code_2.lower()}.png"
 flag_3 = f"https://flagcdn.com/84x63/{code_3.lower()}.png"
 
 nation_display = Div(
-    text=f"""<p style='text-align: left; padding: 20px; box-shadow: 1px 1px #D3D3D3, -1px -1px #D3D3D3;font-size: 22px; color: #58585B; margin-top: 15px;'><br>1. <img src={flag_1}>{country_1}<br>2. <img src={flag_2}>{country_2}<br>3. <img src={flag_3}>{country_3}<br><br></p>""",
+    text=f"""<p style='text-align: left; padding: 20px; box-shadow: 1px 1px #D3D3D3, -1px -1px #D3D3D3;font-size: 22px; color: #58585B; margin-top: 15px;'><br>1. <img src={flag_1}> {country_1} <br>2. <img src={flag_2}> {country_2} <br>3. <img src={flag_3}> {country_3} <br><br></p>""",
 width=350, height=350)
 
 
