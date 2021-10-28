@@ -25,6 +25,11 @@ gender_prob = Dash().gender_prob
 ip_add=Dash().ip_add 
 city=Dash().city
 country=Dash().country
+state=Dash().state
+coord=Dash().coord
+timezone=Dash().timezone
+org=Dash().org
+postal=Dash().postal
 
 
 # prepare some data
@@ -129,8 +134,10 @@ width=350, height=350)
 
 # IP
 
+
+
 ip_display = Div(
-    text=f"""<p style='padding: 25px; box-shadow: 1px 1px #D3D3D3, -1px -1px #D3D3D3;font-size: 22px; color: #58585B; margin: 35px;'><br><b>IP Address (IPv6)</b>: <br> {ip_add}<br><br><b>Location: </b><br>{city}, {country}<br><br></p>""",
+    text=f"""<p style='padding: 25px; box-shadow: 1px 1px #D3D3D3, -1px -1px #D3D3D3;font-size: 22px; color: #58585B; margin: 35px;'><b>IP Address (IPv6)</b>: <br> {ip_add}<br><br><b>Location: </b><br>{city}, {state}, {country}, {postal}<br><br><b>Organization:</b><br>{org}</p>""",
 width=300, height=350)
 
 
