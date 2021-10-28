@@ -12,9 +12,9 @@ class Age_Class:
         a = requests.get("https://api.agify.io?name=" + valid_name)
         age_results = a.json()
         age = age_results['age']
-        print('-------------------------------------------------------')
-        print(f'Based on your name, your age is predicted to be: {age}')
-        print('-------------------------------------------------------')
+        # print('-------------------------------------------------------')
+        # print(f'Based on your name, your age is predicted to be: {age}')
+        # print('-------------------------------------------------------')
         return age
 
 

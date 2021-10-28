@@ -5,10 +5,12 @@ from bokeh.plotting import figure, show, ColumnDataSource
 from bokeh.layouts import layout, row, gridplot
 from bokeh.models import Div, RangeSlider, Spinner, Button, CustomJS
 from bokeh.io import curdoc
+from bokeh.tile_providers import get_provider
 from nationality import Nation
 from dashboard import Dash
 from math import pi
 import pandas
+import xyzservices.providers as xyz
 
 
 valid_name = Dash().valid_name
@@ -70,16 +72,6 @@ title2 = Div(
 width=400, height=50)
 
 
-# # NAME
-# name = Div(
-#     text=f"<p style='fcolor: #58585B; margin-top: -15px;'>Name: {valid_name} <br>Nation: {country_1}, {country_2}, {country_3}<br>Age: {age} <br>Gender: {gender} {gender_prob}</p>",
-# width=400, height=50)
-
-
-
-
-
-
 
 # GENDER GRAPH
 
@@ -134,14 +126,41 @@ width=350, height=350)
 
 # IP
 
-
-
 ip_display = Div(
     text=f"""<p style='padding: 25px; box-shadow: 1px 1px #D3D3D3, -1px -1px #D3D3D3;font-size: 22px; color: #58585B; margin: 35px;'><b>IP Address (IPv6)</b>: <br> {ip_add}<br><br><b>Location: </b><br>{city}, {state}, {country}, {postal}<br><br><b>Organization:</b><br>{org}</p>""",
 width=300, height=350)
 
 
+# Map
 
+x_min = 0
+x_max = 0
+y_min = 0
+y_max = 0
+
+tile_provider = get_provider(xyz.OpenStreetMap.Mapnik)
+
+# range bounds supplied in web mercator coordinates
+coord_x = float(coord.split(',')[0])
+coord_y = float(coord.split(',')[1])
+
+range_x_min = int(coord_x - 1000000)
+range_x_max = int(coord_x + 1000000)
+range_x = tuple([range_x_min, range_x_max])
+
+range_y_min = int(coord_y - 1000000)
+range_y_max = int(coord_y + 1000000)
+range_y = tuple([range_y_min, range_y_max])
+
+map = figure(x_range=range_x, y_range=range_y,
+           x_axis_type="mercator", y_axis_type="mercator")
+map.add_tile(tile_provider)
+
+
+
+
+
+print(range_x)
 
 # GRID LAYOUT
 
@@ -149,6 +168,6 @@ grid = layout([
     [title],
     [title2],
     [gender_graph, nation_display],
-    [age_display, ip_display]
+    [age_display, ip_display, map]
 ])
 show(grid)
