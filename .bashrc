@@ -1,0 +1,2 @@
+
+export location_iq_key='pk.c52233586871f849078b47d1b79f21ca'
