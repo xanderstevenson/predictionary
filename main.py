@@ -127,13 +127,18 @@ flag_2 = f"https://flagcdn.com/84x63/{code_2.lower()}.png"
 flag_3 = f"https://flagcdn.com/84x63/{code_3.lower()}.png"
 
 nation_display = Div(
-    text=f"""<p style='min-width: 315px;min-height:250px;text-align: left; padding: 20px; box-shadow: 1px 1px #D3D3D3, -1px -1px #D3D3D3;font-size: 20px; color: #58585B; margin-top: 15px;'><br>1. <img src={flag_1}> {country_1} <br>2. <img src={flag_2}> {country_2} <br>3. <img src={flag_3}> {country_3} <br><br></p>""",
+    text=f"""<p style='min-width: 315px;min-height:250px;text-align: left; padding: 20px; box-shadow: 1px 1px #D3D3D3, -1px -1px #D3D3D3;font-size: 18px; color: #58585B; margin-top: 15px;'><span><b>Highest Percentage of Name:</b> "{valid_name}"</span><br><br>1. <img src={flag_1}> {country_1} <br>2. <img src={flag_2}> {country_2} <br>3. <img src={flag_3}> {country_3} <br><br></p>""",
 width=350, height=350)
 
 
 # IP
+
+    #Obfuscate last 4 digits of IP
+
+ip_add = ip_add[:-4] + "XXXX"
+
 ip_display = Div(
-    text=f"""<p style='padding: 25px; box-shadow: 1px 1px #D3D3D3, -1px -1px #D3D3D3;font-size: 22px; color: #58585B; margin: 35px;'><b>IP Address (IPv6)</b>: <br> {ip_add}<br><br><b>Location: </b><br>{city}, {state}, {country}, {postal}<br><br><b>Organization:</b><br>{org}</p>""",
+    text=f"""<p style='min-width:315px;min-height:250px;padding: 25px; box-shadow: 1px 1px #D3D3D3, -1px -1px #D3D3D3;font-size: 18px; color: #58585B; margin: 35px;'><b>IP Address (IPv6)</b>: <br> {ip_add}<br><br><b>Location: </b><br>{city}, {state}, {country}, {postal}<br><br><b>Organization:</b><br>{org}</p>""",
 width=300, height=350)
 
 
