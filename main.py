@@ -25,14 +25,14 @@ code_3 = Dash().code_3
 age = Dash().age
 gender = Dash().gender.capitalize()
 gender_prob = Dash().gender_prob
-ip_add=Dash().ip_add 
-city=Dash().city
-country=Dash().country
-state=Dash().state
-coord=Dash().coord
-timezone=Dash().timezone
-org=Dash().org
-postal=Dash().postal
+# ip_add=Dash().ip_add 
+# city=Dash().city
+# country=Dash().country
+# state=Dash().state
+# coord=Dash().coord
+# timezone=Dash().timezone
+# org=Dash().org
+# postal=Dash().postal
 location_iq_key = os.environ['location_iq_key']
 
 # prepare some data
@@ -135,22 +135,22 @@ width=350, height=350)
 
     #Obfuscate last 4 digits of IP
 
-ip_add = ip_add[:-4] + "XXXX"
+# ip_add = ip_add[:-4] + "XXXX"
 
-ip_display = Div(
-    text=f"""<p style='min-width:315px;min-height:250px;padding: 25px; box-shadow: 1px 1px #D3D3D3, -1px -1px #D3D3D3;font-size: 18px; color: #58585B; margin: 35px;'><b>IP Address (IPv6)</b>: <br> {ip_add}<br><br><b>Location: </b><br>{city}, {state}, {country}, {postal}<br><br><b>Organization:</b><br>{org}</p>""",
-width=300, height=350)
+# ip_display = Div(
+#     text=f"""<p style='min-width:315px;min-height:250px;padding: 25px; box-shadow: 1px 1px #D3D3D3, -1px -1px #D3D3D3;font-size: 18px; color: #58585B; margin: 35px;'><b>IP Address (IPv6)</b>: <br> {ip_add}<br><br><b>Location: </b><br>{city}, {state}, {country}, {postal}<br><br><b>Organization:</b><br>{org}</p>""",
+# width=300, height=350)
 
 
 # Map
 
-coord_x = float(coord.split(',')[0])
-coord_y = float(coord.split(',')[1])
+# coord_x = float(coord.split(',')[0])
+# coord_y = float(coord.split(',')[1])
 
-map_display = Div(
-    text=f"""<img style='box-shadow: 1px 1px #D3D3D3, -1px -1px #D3D3D3;'src='https://maps.locationiq.com/v3/staticmap?key={location_iq_key}&center={coord_x},{coord_y}&zoom=11&size=325x325'>
-""",
-width=300, height=350)
+# map_display = Div(
+#     text=f"""<img style='box-shadow: 1px 1px #D3D3D3, -1px -1px #D3D3D3;'src='https://maps.locationiq.com/v3/staticmap?key={location_iq_key}&center={coord_x},{coord_y}&zoom=11&size=325x325'>
+# """,
+# width=300, height=350)
 
 # x_min = 0
 # x_max = 0
@@ -183,6 +183,6 @@ grid = layout([
     [title, name],
     [title2],
     [gender_graph, nation_display, map_display],
-    [age_display, ip_display]
+    [age_display]
 ])
 show(grid)
