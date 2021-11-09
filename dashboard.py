@@ -17,7 +17,7 @@ class Dash:
 
     # Run nationality function imported from nationality.py module
     # At the same time, set a new var, name2 from the reurned value
-    valid_name, country_1, country_2, country_3, code_1, code_2, code_3 = nationality.Nation.nationality_func()
+    valid_name, country_1, country_2, country_3, code_1, code_2, code_3 = nationality.Nation.nationality_func(first_name)
 
     # Run age function imported from age.py module
     age = age.Age_Class.age_func(valid_name)
@@ -29,4 +29,3 @@ class Dash:
     # geo.GeoClass.geo_func()
         
 
-Dash()

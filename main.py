@@ -33,7 +33,7 @@ gender_prob = Dash().gender_prob
 # timezone=Dash().timezone
 # org=Dash().org
 # postal=Dash().postal
-location_iq_key = os.environ['location_iq_key']
+# location_iq_key = os.environ['location_iq_key']
 
 # prepare some data
 x = [1, 2, 3, 4, 5]
@@ -71,13 +71,13 @@ width=400, height=100)
 # TITLE 2
 
 title2 = Div(
-    text="""<p style='font-size: 28; color: #58585B; margin-top: -15px;'>Integrating APIs and IoT into a Custom Dashboard</p>""",
+    text="""<p style='font-size: 28; color: #58585B; margin-top: -15px;'>Integrating APIs into a Custom Dashboard</p>""",
 width=400, height=50)
 
 # NAME
 
 name = Div(
-    text=f"""<p style='color: #58585B;margin-top:30px;font-size:40px;'><i>{valid_name}</i></p>""",
+    text=f"""<p style='color: #58585B;margin-top:30px;font-size:40px;'><b>{valid_name}</b></p>""",
 width=400, height=50)
  
 
@@ -102,8 +102,8 @@ data = pandas.Series(x).reset_index(name='value').rename(columns={'index': 'coun
 data['angle'] = data['value']/data['value'].sum() * 2*pi
 data['color'] = ['#049FD9', '#004BAF']
 
-gender_graph = figure(height=350, width=350, title=f"Gender: {gender}, Probability: {gender_prob}%", toolbar_location=None,
-           tools="hover", tooltips="@country: @value", x_range=(-0.5, 1.0), title_location="below",)
+gender_graph = figure(height=325, width=350, title=f"Gender: {gender}, Probability: {gender_prob}%", toolbar_location=None,
+           tools="hover", outline_line_color='#D3D3D3', border_fill_color='#D3D3D3', background_fill_color='#ECF0F1', tooltips="@country: @value", x_range=(-0.5, 1.0), title_location="below",)
 
 gender_graph.wedge(x=0, y=1, radius=0.4,
         start_angle=cumsum('angle', include_zero=True), end_angle=cumsum('angle'),
@@ -113,11 +113,10 @@ gender_graph.axis.axis_label = None
 gender_graph.axis.visible = False
 gender_graph.grid.grid_line_color = None
 
-
 # AGE
 
 age_display = Div(
-    text=f"""<p style='padding: 125px; box-shadow: 1px 1px #D3D3D3, -1px -1px #D3D3D3;font-size: 40px; color: #58585B; margin-top: 15px;'><b>Age: </b>{age}</p>""",
+    text=f"""<p style='background-color:#ECF0F1;padding: 125px; box-shadow: 1px 1px #D3D3D3, -1px -1px #D3D3D3;font-size: 40px; color: #58585B; margin-top: 15px;'><b>Age: </b>{age}</p>""",
 width=300, height=350)
 
 
@@ -127,7 +126,7 @@ flag_2 = f"https://flagcdn.com/84x63/{code_2.lower()}.png"
 flag_3 = f"https://flagcdn.com/84x63/{code_3.lower()}.png"
 
 nation_display = Div(
-    text=f"""<p style='min-width: 315px;min-height:250px;text-align: left; padding: 20px; box-shadow: 1px 1px #D3D3D3, -1px -1px #D3D3D3;font-size: 18px; color: #58585B; margin-top: 15px;'><span><b>Highest Percentage of Name:</b> "{valid_name}"</span><br><br>1. <img src={flag_1}> {country_1} <br>2. <img src={flag_2}> {country_2} <br>3. <img src={flag_3}> {country_3} <br><br></p>""",
+    text=f"""<p style='background-color:#ECF0F1;min-width: 315px;min-height:280px;text-align: left; padding: 20px; box-shadow: 1px 1px #D3D3D3, -1px -1px #D3D3D3;font-size: 18px; color: #58585B; margin-top: -5px;'><span><b>High Percent of Name:</b> "{valid_name}"</span><br><br>1. <img src={flag_1}> {country_1} <br>2. <img src={flag_2}> {country_2} <br>3. <img src={flag_3}> {country_3} <br><br></p>""",
 width=350, height=350)
 
 
@@ -182,7 +181,7 @@ width=350, height=350)
 grid = layout([
     [title, name],
     [title2],
-    [gender_graph, nation_display, map_display],
+    [gender_graph, nation_display],
     [age_display]
 ])
 show(grid)

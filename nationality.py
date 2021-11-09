@@ -20,7 +20,12 @@ class Nation:
 
         while len(nation_results['country']) < 3:
             print(f"\n{first_name} is not recognized as a common name.\n")
-            Nation.nationality_func(first_name)
+            new_name = input("\n\nPlease enter your first name: \n\n")
+            first_name = new_name
+            r = requests.get("https://api.nationalize.io?name=" + first_name)
+
+        # Turn results into JSON dictionary
+            nation_results = r.json()
 
 
         # print results using f-Strings
