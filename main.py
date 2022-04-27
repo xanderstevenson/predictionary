@@ -1,4 +1,5 @@
 import bokeh
+from bokeh.client import push_session
 from bokeh.palettes import Category20c
 from bokeh.transform import cumsum
 from bokeh.plotting import figure, show, ColumnDataSource
@@ -12,6 +13,9 @@ from math import pi
 import pandas
 import os
 import xyzservices.providers as xyz
+import geocoder
+import re
+
 
 
 valid_name = Dash().valid_name
@@ -117,7 +121,7 @@ gender_graph.grid.grid_line_color = None
 
 age_display = Div(
     text=f"""<p style='background-color:#ECF0F1;padding: 125px; box-shadow: 1px 1px #D3D3D3, -1px -1px #D3D3D3;font-size: 40px; color: #58585B; margin-top: 15px;'><b>Age: </b>{age}</p>""",
-width=300, height=350)
+width=300, height=340)
 
 
 # NATION
@@ -132,13 +136,24 @@ width=350, height=350)
 
 # IP
 
-    #Obfuscate last 4 digits of IP
+#     Obfuscate last 4 digits of IP
+# access_token = '123456789abc'
+# handler = ipinfo.getHandler(access_token)
+# ip_dict = handler.getDetails()
+# ip = ip_dict.ip
+# ip = ip[:-4] + "XXXX"
+# city = ip_dict.city
+# region = ip_dict.region
+# country = ip_dict.country
+# postal = ip_dict.postal
+# org = ip_dict.org
+g = geocoder.ip('me')[0]
+g = re.sub(r"[\([{})\]]", "", str(g))
 
-# ip_add = ip_add[:-4] + "XXXX"
-
-# ip_display = Div(
-#     text=f"""<p style='min-width:315px;min-height:250px;padding: 25px; box-shadow: 1px 1px #D3D3D3, -1px -1px #D3D3D3;font-size: 18px; color: #58585B; margin: 35px;'><b>IP Address (IPv6)</b>: <br> {ip_add}<br><br><b>Location: </b><br>{city}, {state}, {country}, {postal}<br><br><b>Organization:</b><br>{org}</p>""",
-# width=300, height=350)
+ip_display = Div(
+    # text=f"""<p style='min-width:315px;min-height:250px;padding: 25px; box-shadow: 1px 1px #D3D3D3, -1px -1px #D3D3D3;font-size: 18px; color: #58585B; margin: 35px;'><b>IP Address (IPv6)</b>: <br> {ip}<br><br><b>Location: </b><br>{city}, {region}, {country}, {postal}<br><br><b>Organization:</b><br>{org}</p>""",
+    text=f"""<p style='margin-top: -20px;min-width:315px;min-height:280px;background-color:#ECF0F1;padding: 25px; box-shadow: 1px 1px #D3D3D3, -1px -1px #D3D3D3;font-size: 28px; color: #58585B; margin: 35px;text-align:center;'><span style='text-align:center'><b>Your Location: </b></br></br>{g}</span></p>""",
+width=300, height=380)
 
 
 # Map
@@ -182,6 +197,11 @@ grid = layout([
     [title, name],
     [title2],
     [gender_graph, nation_display],
-    [age_display]
+    [age_display, ip_display]
 ])
-show(grid)
+# show(grid)
+
+
+curdoc().add_root(grid)
+session = push_session(curdoc())
+session.show()

@@ -26,6 +26,6 @@ class Dash:
     gender, gender_prob = gender.Gender.gender_func(valid_name)
 
     # Run geo function imported from geo.py and GeoClass
-    # geo.GeoClass.geo_func()
+    geo.GeoClass.geo_func()
         
 
